@@ -1,24 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import HomeTemplate from "./templates/HomeTemplate/index.tsx";
+import Home from "./pages/Home/index.tsx";
+import ListCourses from "./pages/ListCourses/index.tsx";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+    <Routes>
+    <Route path="/" element={<HomeTemplate Component={Home}/>} />
+    <Route path="/courses" element={<HomeTemplate Component={ListCourses}/>} />
+
+    </Routes>
+    </BrowserRouter>
   );
 }
 
