@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import Banner from './Banner.tsx';
+import CounterSection from './CounterSection.tsx';
 
 const Home = () => {
     return (
-        <div>
-            home
-        </div>
+        <Fragment>
+            <Banner/>
+            <CounterSection/>
+        </Fragment>
     );
 };
 

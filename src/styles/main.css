@@ -14890,6 +14890,7 @@ header {
     max-width: 100%; } }
 
 .main-banner {
+  background-image: url('../assests/images/banner/banner.jpg');
   padding-top: 180px;
   padding-bottom: 200px;
   background-size: cover;
