@@ -10822,7 +10822,7 @@ button:focus {
     margin: 0px 15px; }
   .contentCard-top a {
     width: 100%;
-    height: 245px;
+    height: 200px;
     overflow: hidden;
     position: relative;
     display: inline-block; }
@@ -10835,7 +10835,10 @@ button:focus {
     padding: 16px;
     padding-bottom: 0px; }
     .contentCard-bottom h5, .contentCard-bottom .h5 {
-      margin-bottom: 16px; }
+      min-height: 50px;
+      max-height: 50px;
+      margin-bottom: 10px
+       }
   .contentCard-user img {
     margin-right: 8px !important; }
   .contentCard-user p {
@@ -14880,7 +14883,6 @@ header {
     -webkit-align-items: center;
         -ms-flex-align: center;
             align-items: center; } }
-
 @media (max-width: 420px) {
   .footer__wrapper {
     max-width: 100%; } }
@@ -14891,8 +14893,8 @@ header {
 
 .main-banner {
   background-image: url('../assests/images/banner/banner.jpg');
-  padding-top: 180px;
-  padding-bottom: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; }

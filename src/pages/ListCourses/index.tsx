@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ListCourses = () => {
+const index = () => {
     return (
         <div>
-            ListCourses
+            
         </div>
     );
 };
 
-export default ListCourses;
+export default index;

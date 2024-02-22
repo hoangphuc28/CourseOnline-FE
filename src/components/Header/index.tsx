@@ -91,7 +91,7 @@ const Header = () => {
                                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
                                             <a className="nav-link active" aria-current="page" href={`/user/profile`}>
-                                                <img style={{ objectFit: "cover" }} src={userAvatar} alt="Avatar" />
+                                                <img style={{ objectFit: "cover", width: '50px', height: '50px', borderRadius: '50%'}} src={userAvatar} alt="Avatar"  />
                                             </a>
                                             <div className="nav-item--dropdown">
                                                 <ul>
