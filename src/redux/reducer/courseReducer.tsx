@@ -6,11 +6,13 @@ interface CourseState {
   list: Course[];
   loading: boolean;
   error: string | null;
+  length: number;
 }
 const initialState : CourseState = {
   list: [],
   loading: false,
-  error: null
+  error: null,
+  length: 0,
 }
 export const courseSlice = createSlice({
   name: 'courses',
@@ -19,11 +21,14 @@ export const courseSlice = createSlice({
     addCourse(state, action: PayloadAction<Course[]>) {
         state.list = action.payload;
       },
+    updateCourseLength(state, action: PayloadAction<number>) {
+      state.length = action.payload
+    }
    
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { addCourse } = courseSlice.actions
+export const { addCourse, updateCourseLength } = courseSlice.actions
 
 export default courseSlice.reducer

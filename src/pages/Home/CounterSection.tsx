@@ -28,13 +28,11 @@ const CounterSection = () => {
                         <div className="tab-content" id="pills-tabContent">
                             <div className="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
                                 <div className="row">
-                                    {courses.map((item, index) => (
+                                    {courses?.map((item, index) => (
                                         <div key={index} className="col-xl-3 col-md-6">
                                             <Card data={item} />
                                         </div>
                                     ))}
-
-
                                 </div>
                                 <div className="row">
                                     <div className="col-lg-12 text-center">

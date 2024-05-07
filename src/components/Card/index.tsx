@@ -8,7 +8,6 @@ const Card = (props) => {
         }
         return `${description.substr(0, maxLength)}...`;
     }
-    console.log(props)
     const formatCurrency = (price) => {
         return parseInt(price.value).toLocaleString('it-IT', {style : 'currency', currency : `${price.currency}`})
     }

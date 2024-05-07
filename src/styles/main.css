@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap);
 /* Slider */
+
 .slick-slider
 {
     position: relative;
@@ -11559,7 +11560,7 @@ button:focus {
             order: 2; } }
 
 .form-element {
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   position: relative; }
   .form-element label {
     font-size: 14px;
@@ -15852,7 +15853,7 @@ header {
 .featured-popular-courses .button {
   margin-top: 30px; }
 
-.featured-popular-courses .contentCard {
+ .contentCard {
   margin-bottom: 24px; }
 
 .students-says .testimonial__wrapper_title {
@@ -22204,19 +22205,9 @@ body {
   font-weight: 500; }
 
 .signup-area {
-  position: relative;
   background: -webkit-gradient(linear, left top, right top, color-stop(55%, #fff), color-stop(45%, rgba(236, 236, 243, 0.6)));
   background: linear-gradient(90deg, #fff 55%, rgba(236, 236, 243, 0.6) 45%);
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 100vh;
-  overflow-y: auto; }
+}
   .signup-area-image {
     margin-right: -140px;
     margin-left: 60px; }

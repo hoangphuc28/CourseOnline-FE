@@ -1,41 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import logo from "../../assests/images/logo/logo.png";
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteUser } from '../../redux/reducer/userReducer.tsx';
+import { Link } from 'react-router-dom';
+import { GetProfileUser } from '../../redux/action/GetProfileUser.tsx';
+
 const Header = () => {
-    const [userAvatar, setUserAvatar] = useState("");
-    const [loggedIn, setLoggedIn] = useState(false);
-
-
-
-    const handleLogout = () => {
-        // Xóa accessToken và user khỏi localStorage
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("user");
-
-        // Đặt trạng thái đăng nhập thành false
-        setLoggedIn(false);
-
-    };
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user.information)
     useEffect(() => {
-        const user = localStorage.getItem("user");
-        if (user) {
-            const userData = JSON.parse(user);
-            setUserAvatar(userData.avatar.url);
-            setLoggedIn(true);
-        }
-    }, []);
+        if(!user) {
+            const token = localStorage.getItem('token')?.split('"')[1]
+            dispatch(GetProfileUser(token))
+        } 
+    }, [])
     return (
-        <div>
+        <Fragment>
             <header>
                 <nav className="navbar navbar-expand-xl navbar-light bg-transparent">
                     <div className="container">
-                        <a className="navbar-brand" href="index.html">
+                        <Link className="navbar-brand" to={"/"}>
                             <img
                                 src={logo}
                                 alt="Logo"
                                 className="img-fluid"
                             />
-                        </a>
+                        </Link>
                         <button className="menu-icon-container">
                             <span className="menu-icon"></span>
                         </button>
@@ -46,30 +36,30 @@ const Header = () => {
                             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
 
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href={`/`}>
+                                    <Link className="nav-link" aria-current="page" to={`/`}>
                                         Home
-                                    </a>
+                                    </Link>
 
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href={`/listcourses`}>
+                                    <Link className="nav-link" aria-current="page" to={`/courses`}>
                                         Course
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href={`/instructor`}>
+                                    <Link className="nav-link" aria-current="page" to={`/instructor`}>
                                         Instructor
-                                    </a>
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href={`/mylearning`}>
+                                    <Link className="nav-link" aria-current="page" to={`/mylearning`}>
                                         About
-                                    </a>
+                                    </Link>
                                 </li>
                             </ul>
                             <div className="d-flex align-items-center justify-content-between rightContent">
-                                <a
-                                    href={`/cart`}
+                                <Link
+                                    to={`/cart`}
                                     className="cart-nav border-0 bg-transparent mx-3"
                                 >
                                     <svg
@@ -86,29 +76,30 @@ const Header = () => {
                                             fill="#35343E"
                                         ></path>
                                     </svg>
-                                </a>
-                                {loggedIn ? (
+                                </Link>
+                                {user ? (
                                     <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
                                         <li className="nav-item">
-                                            <a className="nav-link active" aria-current="page" href={`/user/profile`}>
-                                                <img style={{ objectFit: "cover", width: '50px', height: '50px', borderRadius: '50%'}} src={userAvatar} alt="Avatar"  />
-                                            </a>
+                                            <Link className="nav-link active" aria-current="page" to={`/user/profile`}>
+                                                <img style={{ objectFit: "cover", width: '50px', height: '50px', borderRadius: '50%' }} src={user.avatar.url} alt="Avatar" />
+                                            </Link>
                                             <div className="nav-item--dropdown">
                                                 <ul>
-                                                    <li><a href="" onClick={handleLogout}>Logout</a></li>
-
+                                                    <li>
+                                                        <Link onClick={() => dispatch(deleteUser())} to={''}>Logout</Link>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
                                     </ul>
                                 ) : (
                                     <div>
-                                        <a href={`/login`} className="button button--text">
+                                        <Link to={`/signin`} className="button button--text">
                                             Sign in
-                                        </a>
-                                        <a href={`/register`} className="button button--dark">
+                                        </Link>
+                                        <Link to={`/signup`} className="button button--dark">
                                             Sign Up
-                                        </a>
+                                        </Link>
                                     </div>
                                 )}
                             </div>
@@ -116,7 +107,7 @@ const Header = () => {
                     </div>
                 </nav>
             </header>
-        </div>
+        </Fragment>
     );
 };
 
